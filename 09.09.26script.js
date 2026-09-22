@@ -866,100 +866,140 @@ function renderScoreFields() {
         `;
     }
 
+/* =====================================================
+   SNAP-IV
+   ===================================================== */
 
-    /* =====================================================
-       SNAP-IV
-       ===================================================== */
+if (
+    assessment.snap
+) {
 
-    if (
-        assessment.snap
-    ) {
+    html += `
 
-        html += `
+    <div class="score-card">
 
-        <div class="score-card">
+        <div class="score-card-header">
 
-            <div class="score-card-header">
+            <strong>
+                SNAP-IV Domain Scores
+            </strong>
 
-                <strong>
-                    SNAP-IV Domain Scores
-                </strong>
-
-                <span>
-                    Domain-wise Entry
-                </span>
-
-            </div>
-
-            <div class="score-grid">
-
-                <div class="score-field">
-
-                    <label>
-                        Inattention — Questions 1–9
-                    </label>
-
-                    <input
-                        type="number"
-                        id="snapInattention"
-                        min="0"
-                        max="27"
-                        step="1"
-                        placeholder="0 – 27"
-                    >
-
-                </div>
-
-
-                <div class="score-field">
-
-                    <label>
-                        Hyperactivity / Impulsivity — Questions 10–18
-                    </label>
-
-                    <input
-                        type="number"
-                        id="snapHyperactivity"
-                        min="0"
-                        max="27"
-                        step="1"
-                        placeholder="0 – 27"
-                    >
-
-                </div>
-
-
-                <div class="score-field">
-
-                    <label>
-                        Opposition / Defiance — Questions 19–26
-                    </label>
-
-                    <input
-                        type="number"
-                        id="snapOpposition"
-                        min="0"
-                        max="24"
-                        step="1"
-                        placeholder="0 – 24"
-                    >
-
-                </div>
-
-            </div>
-
-            <div class="score-help">
-
-                Enter the domain scores obtained from SNAP-IV
-                scoring. This application does not administer
-                SNAP-IV items.
-
-            </div>
+            <span>
+                Domain-wise Entry
+            </span>
 
         </div>
 
-        `;
-    }
+
+        <div class="score-grid">
+
+
+            <div class="score-field">
+
+                <label>
+                    Age — Years
+                </label>
+
+                <input
+                    type="number"
+                    id="snapAgeYears"
+                    min="0"
+                    max="100"
+                    step="1"
+                    placeholder="Years"
+                >
+
+            </div>
+
+
+            <div class="score-field">
+
+                <label>
+                    Age — Months
+                </label>
+
+                <input
+                    type="number"
+                    id="snapAgeMonths"
+                    min="0"
+                    max="11"
+                    step="1"
+                    placeholder="0 – 11"
+                >
+
+            </div>
+
+
+            <div class="score-field">
+
+                <label>
+                    Inattention — Questions 1–9
+                </label>
+
+                <input
+                    type="number"
+                    id="snapInattention"
+                    min="0"
+                    max="27"
+                    step="1"
+                    placeholder="0 – 27"
+                >
+
+            </div>
+
+
+            <div class="score-field">
+
+                <label>
+                    Hyperactivity / Impulsivity — Questions 10–18
+                </label>
+
+                <input
+                    type="number"
+                    id="snapHyperactivity"
+                    min="0"
+                    max="27"
+                    step="1"
+                    placeholder="0 – 27"
+                >
+
+            </div>
+
+
+            <div class="score-field">
+
+                <label>
+                    Opposition / Defiance — Questions 19–26
+                </label>
+
+                <input
+                    type="number"
+                    id="snapOpposition"
+                    min="0"
+                    max="24"
+                    step="1"
+                    placeholder="0 – 24"
+                >
+
+            </div>
+
+
+        </div>
+
+
+        <div class="score-help">
+
+            Enter the child's chronological age and the
+            domain scores obtained from SNAP-IV scoring.
+            This application does not administer SNAP-IV items.
+
+        </div>
+
+
+    </div>
+
+    `;
+}
 
 
     if ($("scoreContainer")) {
@@ -3203,46 +3243,63 @@ function calculateAssessment() {
 
 
     /*
-       Save age information for the child summary.
-    */
+   Save age information for the child summary.
+*/
 
-    if (
-        assessment.matrix === "CPM"
-    ) {
+if (
+    assessment.matrix === "CPM"
+) {
 
-        const age =
-            getAgeFromFields(
-                "cpm"
-            );
+    const age =
+        getAgeFromFields(
+            "cpm"
+        );
 
-        if (age) {
+    if (age) {
 
-            assessment.child.ageYears =
-                age.years;
+        assessment.child.ageYears =
+            age.years;
 
-            assessment.child.ageMonths =
-                age.months;
-        }
-
-    } else if (
-        assessment.matrix === "SPM"
-    ) {
-
-        const age =
-            getAgeFromFields(
-                "spm"
-            );
-
-        if (age) {
-
-            assessment.child.ageYears =
-                age.years;
-
-            assessment.child.ageMonths =
-                age.months;
-        }
+        assessment.child.ageMonths =
+            age.months;
     }
 
+} else if (
+    assessment.matrix === "SPM"
+) {
+
+    const age =
+        getAgeFromFields(
+            "spm"
+        );
+
+    if (age) {
+
+        assessment.child.ageYears =
+            age.years;
+
+        assessment.child.ageMonths =
+            age.months;
+    }
+
+} else if (
+    assessment.snap
+) {
+
+    const age =
+        getAgeFromFields(
+            "snap"
+        );
+
+    if (age) {
+
+        assessment.child.ageYears =
+            age.years;
+
+        assessment.child.ageMonths =
+            age.months;
+    }
+}
 
     return assessment;
 }
