@@ -3242,7 +3242,7 @@ function calculateAssessment() {
     }
 
 
-    /*
+  /*
    Save age information for the child summary.
 */
 
@@ -3300,7 +3300,6 @@ if (
             age.months;
     }
 }
-
     return assessment;
 }
 
