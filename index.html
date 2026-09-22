@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choice Foundation | Psychological Assessment Report</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="logo">CF</div>
+        <div>
+            <h1>CHOICE FOUNDATION</h1>
+            <p>Psychological Assessment Report System</p>
+        </div>
+    </div>
+
+<!-- =============================================
+     SLD SCREENING
+     ============================================= -->
+
+<div class="sld-screening-option">
+
+    <label>
+        <input
+            type="checkbox"
+            id="sldScreened"
+        >
+
+        <strong>Screened for SLD</strong>
+    </label>
+
+</div>
+
+
+<div class="top-actions"> 
+
+    <button 
+        type="button" 
+        class="btn btn-light" 
+        id="resetBtn"
+    >
+        Reset
+    </button> 
+
+    <button 
+        type="button" 
+        class="btn btn-primary" 
+        id="generateBtn"
+    >
+        Generate Report
+    </button> 
+
+</div>
+
+   
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">ASSESSMENT WORKFLOW</div>
+
+        <button class="nav-step active" data-step="1">
+            <span>01</span>
+            <div>
+                <strong>Child Information</strong>
+                <small>Basic details</small>
+            </div>
+        </button>
+
+        <button class="nav-step" data-step="2">
+            <span>02</span>
+            <div>
+                <strong>Instruments</strong>
+                <small>Tests administered</small>
+            </div>
+        </button>
+
+        <button class="nav-step" data-step="3">
+            <span>03</span>
+            <div>
+                <strong>Scores</strong>
+                <small>Assessment data</small>
+            </div>
+        </button>
+
+        <button class="nav-step" data-step="4">
+            <span>04</span>
+            <div>
+<strong>Report Preview</strong>
+<small>Complete report</small>
+            </div>
+        </button>
+
+        <button class="nav-step" data-step="5">
+            <span>05</span>
+            <div>
+                <strong>Report</strong>
+                <small>PDF report</small>
+            </div>
+        </button>
+
+        <div class="sidebar-footer">
+            <span>STATUS</span>
+            <strong id="systemStatus">Ready</strong>
+        </div>
+
+    </aside>
+
+
+    <main class="content">
+
+        <!-- PAGE HEADER -->
+
+        <section class="content-header">
+            <div>
+                <span class="eyebrow">PSYCHOLOGICAL SCREENING & ASSESSMENT</span>
+                <h2>Assessment Report Generator</h2>
+                <p>
+                    Enter assessment information and generate a structured,
+                    rule-driven psychological assessment report.
+                </p>
+            </div>
+        </section>
+
+
+        <div id="messageBox" class="message hidden"></div>
+
+
+        <!-- STEP 1 -->
+
+        <section class="step-page active-page" id="step1">
+
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <div>
+                    <h3>Child Information</h3>
+                    <p>Enter the basic identification and assessment information.</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label>Child Name</label>
+                    <input type="text" id="childName" placeholder="Enter child name">
+                </div>
+
+                <div class="field">
+                    <label>UID / Case ID</label>
+                    <input type="text" id="uid" placeholder="Enter UID / Case ID">
+                </div>
+
+                <div class="field">
+                    <label>Class</label>
+                    <input type="text" id="className" placeholder="Example: VIII-A">
+                </div>
+
+                <div class="field field-wide">
+                    <label>School Name</label>
+                    <input type="text" id="schoolName" placeholder="Enter school name">
+                </div>
+
+                <div class="field">
+                    <label>Gender</label>
+                    <select id="gender">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Date of Assessment</label>
+                    <input type="date" id="assessmentDate">
+                </div>
+
+            </div>
+            <div class="field">
+    <label for="assessedBy">Assessed By</label>
+    <select id="assessedBy" name="assessedBy">
+        <option value="Athira.CM" selected>Athira.CM </option>
+        <option value="Swapna">Swapna</option>
+        <option value="Indrani">Indrani</option>
+         <option value="Yugta chanu">Yugta chanu</option>
+        <option value="Jayanth">Jayanth</option>
+             <option value="Ashwin">Ashwin</option>
+    </select>
+</div>
+
+            <div class="footer-buttons">
+    <button class="btn btn-light prev-btn">← Back</button>
+    <button class="btn btn-primary next-btn">Continue →</button>
+</div>
+
+        </section>
+
+
+        <!-- STEP 2 -->
+
+        <section class="step-page" id="step2">
+
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <div>
+                    <h3>Assessment Instruments</h3>
+                    <p>Select the instruments actually administered.</p>
+                </div>
+            </div>
+
+
+            <div class="instruction-box">
+                <strong>Important:</strong>
+                CPM and SPM cannot be administered together.
+                Select either CPM or SPM. SNAP-IV may additionally be selected.
+            </div>
+
+
+            <h4 class="group-title">PROGRESSIVE MATRICES</h4>
+
+            <div class="instrument-grid">
+
+                <label class="instrument-option">
+
+                    <input type="radio" name="matrix" value="CPM">
+
+                    <div class="instrument-symbol">CPM</div>
+
+                    <div class="instrument-text">
+                        <strong>Raven's Coloured Progressive Matrices</strong>
+                        <span>CPM</span>
+                        <small>Non-verbal reasoning assessment</small>
+                    </div>
+
+                    <div class="selected-mark">✓</div>
+
+                </label>
+
+
+                <label class="instrument-option">
+
+                    <input type="radio" name="matrix" value="SPM">
+
+                    <div class="instrument-symbol">SPM</div>
+
+                    <div class="instrument-text">
+                        <strong>Raven's Standard Progressive Matrices</strong>
+                        <span>SPM</span>
+                        <small>Non-verbal reasoning assessment</small>
+                    </div>
+
+                    <div class="selected-mark">✓</div>
+
+                </label>
+
+            </div>
+
+
+            <h4 class="group-title">BEHAVIOURAL SCREENING</h4>
+
+            <label class="instrument-option snap-option">
+
+                <input type="checkbox" id="snapSelected">
+
+                <div class="instrument-symbol">S-IV</div>
+
+                <div class="instrument-text">
+                    <strong>Swanson, Nolan, and Pelham Rating Scale – IV</strong>
+                    <span>SNAP-IV</span>
+                    <small>Enter domain-wise scores only</small>
+                </div>
+
+                <div class="selected-mark">✓</div>
+
+            </label>
+
+
+            <div class="selected-summary" id="instrumentSummary">
+                No instrument selected.
+            </div>
+
+<div class="footer-buttons">
+    <button class="btn btn-light prev-btn">← Back</button>
+    <button class="btn btn-primary next-btn">Continue →</button>
+</div>
+        </section>
+
+
+        <!-- STEP 3 -->
+
+        <section class="step-page" id="step3">
+
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <div>
+                    <h3>Assessment Scores</h3>
+                    <p>Enter scores for the selected instruments.</p>
+                </div>
+            </div>
+
+            <div id="scoreContainer"></div>
+
+            <div class="footer-buttons">
+
+  <div class="footer-buttons">
+    <button class="btn btn-light prev-btn">← Back</button>
+    <button class="btn btn-primary next-btn">Continue →</button>
+</div>
+
+        </section>
+
+
+        <!-- STEP 4 -->
+
+        <section class="step-page" id="step4">
+
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <div>
+                    <h3>Report Preview</h3>
+<p>Review the complete generated report before printing or saving as PDF.</p>
+                </div>
+            </div>
+
+<div id="reportContainer"></div>
+
+            <div class="footer-buttons">
+                <button class="btn btn-light prev-btn">← Back</button>
+                <button class="btn btn-primary next-btn">View Report →</button>
+            </div>
+
+        </section>
+
+
+        <!-- STEP 5 -->
+
+        <section class="step-page" id="step5">
+
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <div>
+                    <h3>Report Preview</h3>
+                    <p>Final report generated from the entered assessment data.</p>
+               
+                </div>
+            </div>
+
+         <div class="report-actions">
+    <button class="btn btn-primary" id="printBtn">
+        Print / Save as PDF
+    </button>
+</div>
+
+<div id="generatedReport"></div>
+
+
+
+        </section>
+
+    </main>
+
+
+    <!-- RIGHT SUMMARY -->
+
+    <aside class="right-panel">
+
+        <div class="right-title">LIVE SUMMARY</div>
+
+        <div class="summary-block">
+
+            <span class="summary-label">CHILD</span>
+
+            <strong id="summaryName">
+                Not entered
+            </strong>
+
+            <small id="summaryUid">
+                UID not entered
+            </small>
+
+        </div>
+
+
+        <div class="summary-block">
+
+            <span class="summary-label">INSTRUMENTS</span>
+
+            <div id="summaryTests">
+                <span class="empty-chip">None</span>
+            </div>
+
+        </div>
+
+
+        <div class="summary-block">
+
+            <span class="summary-label">FINDINGS</span>
+
+            <div id="summaryFindings">
+                <span class="summary-empty">
+                    No findings yet.
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="summary-status">
+
+            <span class="summary-label">REPORT STATUS</span>
+
+            <strong id="reportStatus">
+                Incomplete
+            </strong>
+
+        </div>
+
+    </aside>
+
+</div>
+
+<script src="09.09.26script.js"></script>
+
+</body>
+</html>
