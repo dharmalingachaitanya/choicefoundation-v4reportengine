@@ -866,27 +866,28 @@ function renderScoreFields() {
         `;
     }
 
-/* =====================================================
-   SNAP-IV
-   ===================================================== */
 
-if (
-    assessment.snap
-) {
+    /* =====================================================
+     *  SNAP-IV
+     *  ===================================================== */
 
-    html += `
+    if (
+        assessment.snap
+    ) {
 
-    <div class="score-card">
+        html += `
+
+        <div class="score-card">
 
         <div class="score-card-header">
 
-            <strong>
-                SNAP-IV Domain Scores
-            </strong>
+        <strong>
+        SNAP-IV Domain Scores
+        </strong>
 
-            <span>
-                Domain-wise Entry
-            </span>
+        <span>
+        Domain-wise Entry
+        </span>
 
         </div>
 
@@ -894,94 +895,94 @@ if (
         <div class="score-grid">
 
 
-            <div class="score-field">
+        <div class="score-field">
 
-                <label>
-                    Age — Years
-                </label>
+        <label>
+        Age — Years
+        </label>
 
-                <input
-                    type="number"
-                    id="snapAgeYears"
-                    min="0"
-                    max="100"
-                    step="1"
-                    placeholder="Years"
-                >
+        <input
+        type="number"
+        id="snapAgeYears"
+        min="0"
+        max="100"
+        step="1"
+        placeholder="Years"
+        >
 
-            </div>
-
-
-            <div class="score-field">
-
-                <label>
-                    Age — Months
-                </label>
-
-                <input
-                    type="number"
-                    id="snapAgeMonths"
-                    min="0"
-                    max="11"
-                    step="1"
-                    placeholder="0 – 11"
-                >
-
-            </div>
+        </div>
 
 
-            <div class="score-field">
+        <div class="score-field">
 
-                <label>
-                    Inattention — Questions 1–9
-                </label>
+        <label>
+        Age — Months
+        </label>
 
-                <input
-                    type="number"
-                    id="snapInattention"
-                    min="0"
-                    max="27"
-                    step="1"
-                    placeholder="0 – 27"
-                >
+        <input
+        type="number"
+        id="snapAgeMonths"
+        min="0"
+        max="11"
+        step="1"
+        placeholder="0 – 11"
+        >
 
-            </div>
-
-
-            <div class="score-field">
-
-                <label>
-                    Hyperactivity / Impulsivity — Questions 10–18
-                </label>
-
-                <input
-                    type="number"
-                    id="snapHyperactivity"
-                    min="0"
-                    max="27"
-                    step="1"
-                    placeholder="0 – 27"
-                >
-
-            </div>
+        </div>
 
 
-            <div class="score-field">
+        <div class="score-field">
 
-                <label>
-                    Opposition / Defiance — Questions 19–26
-                </label>
+        <label>
+        Inattention — Questions 1–9
+        </label>
 
-                <input
-                    type="number"
-                    id="snapOpposition"
-                    min="0"
-                    max="24"
-                    step="1"
-                    placeholder="0 – 24"
-                >
+        <input
+        type="number"
+        id="snapInattention"
+        min="0"
+        max="27"
+        step="1"
+        placeholder="0 – 27"
+        >
 
-            </div>
+        </div>
+
+
+        <div class="score-field">
+
+        <label>
+        Hyperactivity / Impulsivity — Questions 10–18
+        </label>
+
+        <input
+        type="number"
+        id="snapHyperactivity"
+        min="0"
+        max="27"
+        step="1"
+        placeholder="0 – 27"
+        >
+
+        </div>
+
+
+        <div class="score-field">
+
+        <label>
+        Opposition / Defiance — Questions 19–26
+        </label>
+
+        <input
+        type="number"
+        id="snapOpposition"
+        min="0"
+        max="24"
+        step="1"
+        placeholder="0 – 24"
+        >
+
+        </div>
 
 
         </div>
@@ -989,17 +990,18 @@ if (
 
         <div class="score-help">
 
-            Enter the child's chronological age and the
-            domain scores obtained from SNAP-IV scoring.
-            This application does not administer SNAP-IV items.
+        Enter the child's chronological age and the
+        domain scores obtained from SNAP-IV scoring.
+        This application does not administer SNAP-IV items.
 
         </div>
 
 
-    </div>
+        </div>
 
-    `;
-}
+        `;
+    }
+
     if ($("scoreContainer")) {
 
         $("scoreContainer").innerHTML =
@@ -3239,65 +3241,66 @@ function calculateAssessment() {
         calculateSNAP();
     }
 
+    /*
+     *  Save age information for the child summary.
+     */
 
-  /*
-   Save age information for the child summary.
-*/
+    if (
+        assessment.matrix === "CPM"
+    ) {
 
-if (
-    assessment.matrix === "CPM"
-) {
-
-    const age =
+        const age =
         getAgeFromFields(
             "cpm"
         );
 
-    if (age) {
+        if (age) {
 
-        assessment.child.ageYears =
+            assessment.child.ageYears =
             age.years;
 
-        assessment.child.ageMonths =
+            assessment.child.ageMonths =
             age.months;
-    }
+        }
 
-} else if (
-    assessment.matrix === "SPM"
-) {
+    } else if (
+        assessment.matrix === "SPM"
+    ) {
 
-    const age =
+        const age =
         getAgeFromFields(
             "spm"
         );
 
-    if (age) {
+        if (age) {
 
-        assessment.child.ageYears =
+            assessment.child.ageYears =
             age.years;
 
-        assessment.child.ageMonths =
+            assessment.child.ageMonths =
             age.months;
-    }
+        }
 
-} else if (
-    assessment.snap
-) {
+    } else if (
+        assessment.snap
+    ) {
 
-    const age =
+        const age =
         getAgeFromFields(
             "snap"
         );
 
-    if (age) {
+        if (age) {
 
-        assessment.child.ageYears =
+            assessment.child.ageYears =
             age.years;
 
-        assessment.child.ageMonths =
+            assessment.child.ageMonths =
             age.months;
+        }
     }
-}
+
+
     return assessment;
 }
 
