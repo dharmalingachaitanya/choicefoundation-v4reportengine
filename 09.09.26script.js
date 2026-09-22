@@ -1000,8 +1000,6 @@ if (
 
     `;
 }
-
-
     if ($("scoreContainer")) {
 
         $("scoreContainer").innerHTML =
